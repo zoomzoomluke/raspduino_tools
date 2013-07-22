@@ -17,7 +17,7 @@ fi
 
 echo "---------- checking required packages ---------"
 need_update=true
-required_programs="avrdude arduino"
+required_programs="avrdude arduino-core gcc-avr avr-libc avrdude"
 for i in $required_programs ; do
    if [ ! -f /usr/bin/$i ] ; then
       # $i is not installed, lets install it. 
@@ -54,7 +54,7 @@ case "$avrdudefile" in
 #!/bin/sh
 # This script replaces avrdude and resets the raspduino
 # in case you don't have the software DTR patch. 
-[ -f /etc/have_software_DTR ] || sudo reset_raspduino
+[ -f /etc/have_software_DTR ] || reset_raspduino
 avrdude.bin "\$@"
 EOF
       chmod 755 /usr/bin/avrdude
