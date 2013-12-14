@@ -136,6 +136,7 @@ fi
 
 echo ------------- checking cmdline.txt -----------------
 if grep -q ttyAMA0 /boot/cmdline.txt ; then
+   mount /boot -o remount,rw
    echo "removing ttyAMA0 as console from cmdline."
    mv /boot/cmdline.txt /boot/cmdline.txt.orig
    # remove ttyAMA references from cmdline.txt. Usually console= and kgdboc= . 
